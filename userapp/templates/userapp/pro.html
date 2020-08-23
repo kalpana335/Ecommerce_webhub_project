@@ -51,11 +51,11 @@
 			<td><div style="height:  10px; width:10;  background-color:{{product.Pcolor}}"></div></td>
 			<td>
 
-				<form name="Add" action="{% url 'single_product' %}">
+				<form name="Add" action="{% url 'single_product' pk=user.id %}">
 					{% csrf_token %}
 					
-					<input type = "hidden" name="id" value="">
-					<input type = "submit" name="action" value="Add">
+					<input type = "hidden" name="id" value="{{user.id}}">
+					<input type = "submit" name="action" value="edit">
 			
 				</form>
 				</td>
