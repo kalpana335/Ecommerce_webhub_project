@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Product form</title>
+  </head>
+  <body>
+    <!-- <h1>Hello, world!</h1> -->
+    <div class="container">
+        <!-- <div class="row row-cols-2"> -->
+        <form action="{% url 'add_product' %}" method="POST" enctype="multipart/form-data"> 
+          {% csrf_token %}
+
+        <table class="table" border="2px">
+        <!-- <caption>Product Details </caption> -->
+
+
+        <thead>
+        <tr scope="row">
+            <td scope="col">Product Name: </td>
+            <td><input class="form-control" type="text" placeholder="enter product name" name="pn"></td>
+        </tr>
+
+        <tr scope="row">
+            <td scope="col">Product Category: </td>
+            <td>
+                <!-- <label for="Category">Select Category:</label> -->
+                <select name="cate" id="cate">
+                    <option value="Men's wear">Men's wear</option>
+                    <option value="Women's wear">Women's wear</option>
+                    <option value="Children's wear">Children's wear</option>
+                    <option value="Sport's wear">Sport's wear</option>
+                    <option value="Casual wear">Casual wear</option>
+
+                </select>
+            </td>
+        </tr>
+
+        <tr scope="row">
+            <td scope="col">Product size: </td>
+            <td>
+                <!-- <label for="cars">Choose a car:</label> -->
+                <select name="size" id="size">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select> 
+              </td>
+
+        </tr>
+
+
+        <tr scope="row">
+          <td scope="col">Product types: </td>
+          <td>
+            <!-- <label for="cars">Choose a car:</label> -->
+            <select name="type" id="type">
+                <option value="Casual Shoes">Casual Shoes</option>
+                <option value="Sport Shoes">Sport Shoes</option>
+                <option value="Sandal">Sandal</option>
+                <option value="Slippers">Slippers</option>
+                <option value="Party wear">Party wear</option>
+                <option value="Ankle booties">Ankle booties</option>
+                <option value="Flat">Flat</option>
+            </select> 
+          </td>     
+         </tr>
+
+          <tr scope="row">
+            <td scope="col">Product price: </td>
+            <td><input class="form-control" type="text" name="pp" placeholder="enter product price"> </td>
+            </tr>
+
+        <tr scope="row">
+          <td scope="col">Product color: </td>
+          <td><input class="form-control" type="color" name="pc" placeholder="enter product color"> </td>
+        </tr>
+        <tr scope="row">
+            <td scope="col">Product Image: </td>
+            <td><input class="form-control-file" type="file" name="pimg" placeholder="upload file "> </td>
+        </tr>
+        <tr scope="row">
+          <td scope="col"></td>
+          <td>
+            <button type="submit" value="submit" class="primary-btn">upload</button>
+
+          </td>
+        </tr>
+      </thead>
+    </table>
+
+   
+        </div>
+        
+      
+      </form>
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

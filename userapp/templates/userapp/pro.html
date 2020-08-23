@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Product Details Page</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="single-product.html">product-details</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	
+
+	<table class="table" border: 1px solid black;>
+		<thead>
+		  <tr>
+			<th scope="col">Product id</th>
+
+			<th scope="col">Product image</th>
+			<th scope="col">Product Name </th>
+			<th scope="col">Product category </th>
+			<th scope="col">Product price</th>
+			<th scope="col">Product size</th>
+			<th scope="col">Product color</th>
+			<th scope="col">Add to cart</th>
+
+
+		  </tr>
+		</thead>
+		<tbody>
+			{% for product in keys %}
+		  <tr>
+
+			<th scope="row">{{product.id}}</th>
+			<td><img src=" {{MEDIA_URL}}{{product.Pimage.url}}" height="120px" width="200px" alt=""> </td>
+			<td>{{product.Pname}}</td>
+			<td>{{product.Pcategory}}</td>
+			<td>{{product.Pprice}}</td>
+			<td>{{product.Psize}}</td>
+			<td><div style="height:  10px; width:10;  background-color:{{product.Pcolor}}"></div></td>
+			<td>
+
+				<form name="Add" action="{% url 'single_product' %}">
+					{% csrf_token %}
+					
+					<input type = "hidden" name="id" value="">
+					<input type = "submit" name="action" value="Add">
+			
+				</form>
+				</td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+	  </table>
+		
+
+{% endblock %}
