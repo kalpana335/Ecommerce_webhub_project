@@ -1,0 +1,51 @@
+
+	
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>GET OTP</title>
+  </head>
+  <body>
+  <div class="card card-outline-secondary">
+    <div class="card-header">
+        <h3 class="mb-0">Enter Otp</h3>
+    </div>
+    <div class="card card-outline-secondary">
+        <form class="form" action="{% url 'verify_otp' %}" method='POST' role="form" autocomplete="off">
+            {% csrf_token %}
+            <div>
+                {% if err_msg %}
+                <ul class="messages">
+                    {% for err_msg in err_msg %}
+                     <li style="color: rgb(179,179,179);"{% if err_msg.tags %} class="{{err_msg.tags}}"{% endif %}>{{ err_msg }}
+                     </li>
+                     {% endfor %}
+                 </ul>
+                 {% endif %}
+        
+    
+    <form class="form" action="{% url 'reset_password' %}" method='POST' role="form" autocomplete="off">
+        {% csrf_token %}
+    <div class="form-group">
+		<input type="number"  name="otp" id="mobileOtp" class="form-input" placeholder="Enter the OTP" required>
+			<p><label>OTP is sent to Your email address </label></p>
+	</div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label"></label>
+    <div class="col-lg-9">
+        <input type="submit" type="reset" class="btn btn-success" value="Reset Password">
+    </div>
+    </div>
+        </form>
+    </div>
+</div>
+</body>
+

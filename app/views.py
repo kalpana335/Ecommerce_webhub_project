@@ -1,6 +1,10 @@
 from django.shortcuts import render,HttpResponseRedirect,reverse,redirect
 from .models import *
+from django.conf import settings
+from django.core.mail import send_mail
 from django.contrib import messages
+from random import *
+
 
 # Create your views here.
 def index(request):
@@ -116,6 +120,80 @@ def add_product(request):
 #     all_products = products.objects.all()
 #     return render(request,'app/show_product.html',{"keys":all_products})
 
+def forgot(request):
+    return render(request,'app/forgot.html')
+
+def get_email(request):
+    email = request.POST['em']
+    
+    try:
+        abc = profile.objects.get(Email=email)
+        
+        if abc.Email == email:
+            otp = randint(100000, 9999999)
+            new = check.objects.create(
+            Otp = otp
+        )
+            send_mail('OTP FOR RESET PASSWORD :' + str(otp) ,
+            "Kindly notedown your otp " + str(otp) + " ", 
+            email,
+            [email], 
+            fail_silently=True)
+            return HttpResponseRedirect(reverse('get_otp'))
+
+        else:
+            er_msg = "You have entered unregistered email." #here is an error programe cant go in else part
+            # return render(request,'app/forgot.html',{'er_msg':er_msg})
+            return HttpResponseRedirect(reverse('forgot'))
+    except:
+        pass
+
+def get_otp(request):
+    return render(request,'app/get_otp.html')
+
+def verify_otp(request):
+    print("here")
+    otp1 = request.POST['otp']
+    verify_otp = check.objects.get(Otp = otp1)
+    print(otp1)
+    if verify_otp.Otp:
+        return HttpResponseRedirect(reverse('reset_password'))
+    else:
+        print("no")
+        err_msg = "you have entered wrong otp"
+        return render(request,'app/get_otp.html',{'err_msg':err_msg})
+
+
+
+def reset_password(request):
+    return render(request,'app/reset_password.html')
+
+def get_newpassword(request):
+
+    try:
+        email = request.POST['em']
+        new_password = request.POST['nps']
+        new_password1 = request.POST['cps']
+
+        if new_password == new_password1:
+            availuser = profile.objects.get(Email = email)
+
+            availuser.PassWord = new_password
+            availuser.save()
+
+        
+            # messages.info(request,"Password has changed successfully.")
+            return HttpResponseRedirect(reverse('login'))
+       
+        # else:
+        #     messages.info(request,"Password does not match.")
+        #     return render(request,'app/reset_password.html')
+
+    except:
+        pass
+
+
+
 
 def contact(request):
     return render(request,'app/contact.html')
@@ -147,6 +225,6 @@ def single_product(request):
 def tracking(request):
     return render(request,'app/pro.html')
 
-# def pro(request):
-#     all_products = products.objects.all()
-#     return render(request,'app/pro.html',{"keys":all_products})
+def pro(request):
+    all_products = products.objects.all()
+    return render(request,'app/pro.html',{"keys":all_products})

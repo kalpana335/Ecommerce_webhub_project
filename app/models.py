@@ -15,6 +15,11 @@ class profile(models.Model):
     Zipcode  = models.CharField(max_length=50)
     Country = models.CharField(max_length=50)
 
+
+class check(models.Model):
+    Otp = models.IntegerField()
+
+
 class user(models.Model):
     UserId =  models.ForeignKey(profile,on_delete=models.CASCADE)
     Email = models.CharField(max_length=50)

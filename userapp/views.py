@@ -16,36 +16,29 @@ def profile_show(request):
     # print(Profile)
     return render(request,'userapp/profile_show.html',{'user':Profile})
 
-def single_product(request):
-    # ids = request.session.get('user')
-    # print(ids)
-    product_image = products.objects.filter(id = ids)
-    print(product_image)
-    return render(request,'userapp/single_product.html',{"product":product_image})
-
 
 
 
 def editdetails(request,pk):
     edituser = profile.objects.get(pk=pk)
     print("edituser is here",edituser)
-    return render(request,"userapp/profile_edit.html",{"users":edituser})
+    return render(request,"userapp/profile_edit.html",{"keys":edituser})
 
 
 def edituser(request,pk):
     existuser = profile.objects.get(id = pk)
-    existuser.firstname = request.POST.get('fn')
-    existuser.lastname = request.POST.get('ls')
+    existuser.Firstname = request.POST.get('fn')
+    existuser.Lastname = request.POST.get('ls')
     # existuser.email = request.POST.get('em')
-    existuser.password = request.POST.get('ps')
-    existuser.mobile = request.POST.get('mb1')
-    existuser.alternatemobile = request.POST.get('mb2')
-    existuser.address1 = request.POST.get('ad1')
-    existuser.address2 = request.POST.get('ad2')
-    existuser.city = request.POST.get('ct')
-    existuser.state = request.POST.get('st')
-    existuser.zipcode = request.POST.get('zp')
-    existuser.country = request.POST.get('ctry')
+    existuser.Password = request.POST.get('ps')
+    existuser.Mobile = request.POST.get('mb1')
+    existuser.Alternatemobile = request.POST.get('mb2')
+    existuser.Address1 = request.POST.get('ad1')
+    existuser.Address2 = request.POST.get('ad2')
+    existuser.City = request.POST.get('ct')
+    existuser.State = request.POST.get('st')
+    existuser.Zipcode = request.POST.get('zp')
+    existuser.Country = request.POST.get('ctry')
    
     existuser.save()
 
@@ -56,6 +49,16 @@ def edituser(request,pk):
 def show_product(request):
     all_products = products.objects.all()
     return render(request,'app/show_product.html',{"keys":all_products})
+
+
+def single_product(request):
+    ids = request.session.get('user')
+    print(ids)
+    product_image = products.objects.filter(id = ids)
+    print(product_image)
+    return render(request,'userapp/single_product.html',{"user":product_image})
+
+
 
 
 def pro(request):

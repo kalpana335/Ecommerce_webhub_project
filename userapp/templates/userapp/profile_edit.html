@@ -7,51 +7,52 @@
 </head>
 <body>
     <table>
-    <form action="{% url 'edituser' pk=users.id %}" method="POST">
+    <form action="{% url 'edituser' pk=keys.id %}" method="POST">
         {% csrf_token %}
-        {% if users %}
-
+        {% if keys %}
+        <table class="table table-bordered">
+            
        <tr> 
-           <td><input type="text" name="fn" class="formstyle" value="{{users.Firstname}}" placeholder="Firstname(required)" required/></td>
+           <td><label>Firstname:</label><input type="text" name="fn" class="formstyle" value="{{keys.Firstname}}" placeholder="Firstname(required)" required/></td>
         </tr>
         <tr> 
-            <td><input type="text" name="ls" class="formstyle" value="{{users.Lastname}}" placeholder="Lastname(required)" required/></td>
+            <td><label>Lastname:</label><input type="text" name="ls" class="formstyle" value="{{keys.Lastname}}" placeholder="Lastname(required)" required/></td>
         </tr>
         <!-- <input type="text" name="npt" class="formstyle" value="{{user.Email}}" placeholder="Email"(required) required/> -->
         <tr> 
-            <td><input type="text" name="ps" class="formstyle" value="{{users.Password}}" placeholder="Password(required)" required/></td>
+            <td><label>Password:</label><input type="text" name="ps" class="formstyle" value="{{keys.Password}}" placeholder="Password(required)" required/></td>
         </tr>
-                <tr> 
-                    <td><input type="text" name="mb1" class="formstyle" value="{{users.Mobile}}" placeholder="Mobile(required)" required/></td>
-                </tr>
-                        <tr> 
-                            <td><input type="text" name="mb2" class="formstyle" value="{{users.AlternateMobileno}}" placeholder="AlternateMobileno(required)" required/></td>
-                        </tr>
+        <tr> 
+            <td><label>Mobile:</label><input type="text" name="mb1" class="formstyle" value="{{keys.Mobile}}" placeholder="Mobile(required)" required/></td>
+        </tr>
+        <tr> 
+            <td><label>AlternateMobileno:</label><input type="text" name="mb2" class="formstyle" value="{{keys.AlternateMobileno}}" placeholder="AlternateMobileno(required)" required/></td>
+        </tr>
         
-                        <tr> 
-                            <td><input type="text" name="ad1" class="formstyle" value="{{users.Address1}}" placeholder="Address1(required)" required/></td>
-                        </tr>
+        <tr> 
+            <td><label>Address1:</label><input type="text" name="ad1" class="formstyle" value="{{keys.Address1}}" placeholder="Address1(required)" required/></td>
+        </tr>
         
-                                <tr> 
-                                    <td><input type="text" name="ad2" class="formstyle" value="{{users.Address2}}" placeholder="Address2(required)" required/></td>
-                                </tr>
+        <tr> 
+            <td><label>Address2:</label><input type="text" name="ad2" class="formstyle" value="{{keys.Address2}}" placeholder="Address2(required)" required/></td>
+        </tr>
  
-                                        <tr> 
-                                            <td> <input type="text" name="ct" class="formstyle" value="{{users.City}}" placeholder="City(required)" required/></td>
-                                        </tr>
-        <tr><input type="text" name="st" class="formstyle" value="{{users.State}}" placeholder="State(required)" required/></td>
+        <tr> 
+            <td><label>City:</label> <input type="text" name="ct" class="formstyle" value="{{keys.City}}" placeholder="City(required)" required/></td>
+        </tr>
+        <tr><label>State:</label><input type="text" name="st" class="formstyle" value="{{keys.State}}" placeholder="State(required)" required/></td>
         </tr>
         <tr>
-            <td><input type="text" name="zp" class="formstyle" value="{{users.Zipcode}}" placeholder="Zipcode(required)" required/></td>
-    </tr>
+            <td><label>Zipcode:</label><input type="text" name="zp" class="formstyle" value="{{keys.Zipcode}}" placeholder="Zipcode(required)" required/></td>
+        </tr>
         <tr>
-            <td><input type="text" name="ctry" class="formstyle" value="{{users.Country}}" placeholder="PhotoOfBill(required)" required/></td>
-    </tr>
+            <td><label>Country:</label><input type="text" name="ctry" class="formstyle" value="{{keys.Country}}" placeholder="PhotoOfBill(required)" required/></td>
+        </tr>
         <tr><td>
         <button type="submit" class="btn btn-primary">Submit</button>
     </td></tr>
         {% endif %}
-
+    </table>
     </form>
 </table>
 </body>
